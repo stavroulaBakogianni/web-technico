@@ -53,10 +53,10 @@ public class Property implements Serializable {
     private boolean isDeleted = false;
     
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_vat", referencedColumnName = "vat", nullable = false)
     private User user;
     
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Repair> repairs;
 
     @Override
