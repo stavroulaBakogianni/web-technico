@@ -66,7 +66,7 @@ public class User implements Serializable {
     @NotNull
     private Role role;
    
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Property> properties;
     
     @Override
