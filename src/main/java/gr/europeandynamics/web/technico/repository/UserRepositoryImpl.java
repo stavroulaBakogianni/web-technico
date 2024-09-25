@@ -31,39 +31,33 @@ public class UserRepositoryImpl implements Repository<User, Long> {
         }
     }
 
-    public Optional<User> findByVat(String vat) {
+    public Optional<User> getUserByVat(String vat) {
         TypedQuery<User> query = entityManager.createQuery("FROM User WHERE vat = :vat", User.class);
         query.setParameter("vat", vat);
         return query.getResultStream().findFirst();
     }
 
-    public Optional<User> findByEmail(String email) {
+    public Optional<User> getUserByEmail(String email) {
         TypedQuery<User> query = entityManager.createQuery("FROM User WHERE email = :email", User.class);
         query.setParameter("email", email);
         return query.getResultStream().findFirst();
     }
 
-    public Optional<User> findByUsername(String username) {
-        TypedQuery<User> query = entityManager.createQuery("FROM User WHERE username = :username", User.class);
-        query.setParameter("username", username);
-        return query.getResultStream().findFirst();
-    }
-
-    public Optional<User> findByUsernameAndPassword(String username, String password) {
+    public Optional<User> getUserByEmailAndPassword(String email, String password) {
         TypedQuery<User> query = entityManager.createQuery(
-                "FROM User WHERE username = :username AND password = :password AND isDeleted = false",
+                "FROM User WHERE email = :email AND password = :password AND isDeleted = false",
                 User.class
         );
-        query.setParameter("username", username);
+        query.setParameter("email", email);
         query.setParameter("password", password);
         return query.getResultStream().findFirst();
     }
 
     @Transactional
-    public boolean deletePermanentlyByVat(String vat) {
+    public boolean deleteUserPermanentlyByVat(String vat) {
         try {
 
-            Optional<User> optionalUser = findByVat(vat);
+            Optional<User> optionalUser = getUserByVat(vat);
 
             if (optionalUser.isPresent()) {
                 User user = optionalUser.get();
@@ -79,7 +73,7 @@ public class UserRepositoryImpl implements Repository<User, Long> {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<User> getById(Long id) {
         User user;
         try {
             user = entityManager.find(getEntityClass(), id);
@@ -92,7 +86,7 @@ public class UserRepositoryImpl implements Repository<User, Long> {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> getAll() {
         TypedQuery<User> query
                 = entityManager.createQuery("from " + getEntityClassName(), getEntityClass());
         return query.getResultList();
