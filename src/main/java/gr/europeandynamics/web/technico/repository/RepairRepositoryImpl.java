@@ -33,13 +33,13 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
     }
 
     @Override
-    public List<Repair> findAll() {
+    public List<Repair> getAll() {
         TypedQuery<Repair> query = entityManager.createQuery("from " + getEntityClassName(), getEntityClass());
         return query.getResultList();
     }
 
     @Override
-    public Optional<Repair> findById(Long id) {
+    public Optional<Repair> getById(Long id) {
         try {
             Repair repair = entityManager.find(getEntityClass(), id);
             return Optional.ofNullable(repair);
