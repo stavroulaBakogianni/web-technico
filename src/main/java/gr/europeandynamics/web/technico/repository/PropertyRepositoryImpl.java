@@ -33,7 +33,7 @@ public class PropertyRepositoryImpl implements Repository<Property, Long> {
     }
 
     @Override
-    public Optional<Property> findById(Long id) {
+    public Optional<Property> getById(Long id) {
         Property property;
         try {
             property = entityManager.find(getEntityClass(), id);
@@ -45,7 +45,7 @@ public class PropertyRepositoryImpl implements Repository<Property, Long> {
     }
 
     @Override
-    public List<Property> findAll() {
+    public List<Property> getAll() {
         TypedQuery<Property> query
                 = entityManager.createQuery("from " + getEntityClassName(), getEntityClass());
         return query.getResultList();
