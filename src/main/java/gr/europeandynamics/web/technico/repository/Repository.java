@@ -7,9 +7,9 @@ public interface Repository<T, K> {
 
     Optional<T> save(T t);
 
-    Optional<T> findById(K id);
+    Optional<T> getById(K id);
 
-    List<T> findAll();
+    List<T> getAll();
 
     boolean deleteById(K id);
 }
