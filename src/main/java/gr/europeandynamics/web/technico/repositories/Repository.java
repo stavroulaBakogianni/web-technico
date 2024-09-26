@@ -1,4 +1,4 @@
-package gr.europeandynamics.web.technico.repository;
+package gr.europeandynamics.web.technico.repositories;
 
 import java.util.List;
 import java.util.Optional;

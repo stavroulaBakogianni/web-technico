@@ -1,6 +1,6 @@
-package gr.europeandynamics.web.technico.repository;
+package gr.europeandynamics.web.technico.repositories;
 
-import gr.europeandynamics.web.technico.model.Property;
+import gr.europeandynamics.web.technico.models.Property;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

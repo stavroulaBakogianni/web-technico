@@ -1,7 +1,7 @@
-package gr.europeandynamics.web.technico.service;
+package gr.europeandynamics.web.technico.services;
 
-import gr.europeandynamics.web.technico.model.Property;
-import gr.europeandynamics.web.technico.model.PropertyType;
+import gr.europeandynamics.web.technico.models.Property;
+import gr.europeandynamics.web.technico.models.PropertyType;
 import java.util.List;
 import java.util.Optional;
 

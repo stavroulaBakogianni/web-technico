@@ -1,7 +1,7 @@
-package gr.europeandynamics.web.technico.validator;
+package gr.europeandynamics.web.technico.validators;
 
-import gr.europeandynamics.web.technico.exception.CustomException;
-import gr.europeandynamics.web.technico.model.Repair;
+import gr.europeandynamics.web.technico.exceptions.CustomException;
+import gr.europeandynamics.web.technico.models.Repair;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

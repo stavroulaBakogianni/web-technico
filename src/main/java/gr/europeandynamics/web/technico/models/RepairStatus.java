@@ -1,4 +1,4 @@
-package gr.europeandynamics.web.technico.model;
+package gr.europeandynamics.web.technico.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

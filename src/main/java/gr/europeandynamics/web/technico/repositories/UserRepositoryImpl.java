@@ -1,6 +1,6 @@
-package gr.europeandynamics.web.technico.repository;
+package gr.europeandynamics.web.technico.repositories;
 
-import gr.technico.technikon.model.User;
+import gr.europeandynamics.web.technico.models.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -32,6 +32,7 @@ public class UserRepositoryImpl implements Repository<User, Long> {
     }
 
     public Optional<User> getUserByVat(String vat) {
+
         TypedQuery<User> query = entityManager.createQuery("FROM User WHERE vat = :vat", User.class);
         query.setParameter("vat", vat);
         return query.getResultStream().findFirst();

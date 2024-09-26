@@ -1,6 +1,6 @@
-package gr.europeandynamics.web.technico.model;
+package gr.europeandynamics.web.technico.models;
 
-import gr.technico.technikon.model.User;
+import gr.europeandynamics.web.technico.models.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

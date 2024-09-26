@@ -1,4 +1,4 @@
-package gr.europeandynamics.web.technico.model;
+package gr.europeandynamics.web.technico.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

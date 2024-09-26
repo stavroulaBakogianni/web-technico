@@ -1,12 +1,12 @@
-package gr.europeandynamics.web.technico.service;
+package gr.europeandynamics.web.technico.services;
 
-import gr.europeandynamics.web.technico.exception.CustomException;
-import gr.europeandynamics.web.technico.model.Property;
-import gr.europeandynamics.web.technico.model.Repair;
-import gr.europeandynamics.web.technico.model.RepairType;
-import gr.europeandynamics.web.technico.repository.RepairRepositoryImpl;
-import gr.europeandynamics.web.technico.validator.RepairValidator;
-import gr.technico.technikon.model.User;
+import gr.europeandynamics.web.technico.exceptions.CustomException;
+import gr.europeandynamics.web.technico.models.Property;
+import gr.europeandynamics.web.technico.models.Repair;
+import gr.europeandynamics.web.technico.models.RepairType;
+import gr.europeandynamics.web.technico.repositories.RepairRepositoryImpl;
+import gr.europeandynamics.web.technico.validators.RepairValidator;
+import gr.europeandynamics.web.technico.models.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;

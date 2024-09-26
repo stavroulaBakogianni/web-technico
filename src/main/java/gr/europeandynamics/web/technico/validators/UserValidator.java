@@ -1,8 +1,8 @@
-package gr.europeandynamics.web.technico.validator;
+package gr.europeandynamics.web.technico.validators;
 
-import gr.europeandynamics.web.technico.exception.CustomException;
-import gr.europeandynamics.web.technico.model.Role;
-import gr.technico.technikon.model.User;
+import gr.europeandynamics.web.technico.exceptions.CustomException;
+import gr.europeandynamics.web.technico.models.Role;
+import gr.europeandynamics.web.technico.models.User;
 import java.util.regex.Pattern;
 
 public class UserValidator {

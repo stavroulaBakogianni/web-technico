@@ -1,7 +1,7 @@
-package gr.europeandynamics.web.technico.service;
+package gr.europeandynamics.web.technico.services;
 
-import gr.europeandynamics.web.technico.model.Role;
-import gr.technico.technikon.model.User;
+import gr.europeandynamics.web.technico.models.Role;
+import gr.europeandynamics.web.technico.models.User;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +12,8 @@ public interface UserService {
     Optional<User> getUserByVat(String vat);
 
     Optional<User> getUserByEmail(String email);
+
+    Optional<User> getUserByEmailAndPassword(String email, String password);
 
     List<User> getAllUsers();
 

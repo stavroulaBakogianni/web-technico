@@ -1,4 +1,4 @@
-package gr.europeandynamics.web.technico.model;
+package gr.europeandynamics.web.technico.models;
 
 public enum Role {
     PROPERTY_OWNER,

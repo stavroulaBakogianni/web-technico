@@ -1,7 +1,6 @@
-package gr.technico.technikon.model;
+package gr.europeandynamics.web.technico.models;
 
-import gr.europeandynamics.web.technico.model.Property;
-import gr.europeandynamics.web.technico.model.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -65,10 +64,11 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     @NotNull
     private Role role;
-   
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Property> properties;
-    
+
     @Override
     public String toString() {
         return "User {"
