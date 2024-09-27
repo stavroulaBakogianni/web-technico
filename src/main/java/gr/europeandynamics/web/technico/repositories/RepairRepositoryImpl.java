@@ -9,7 +9,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
@@ -72,14 +74,6 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
         return save(repair).isPresent();
     }
 
-    public List<Repair> findRepairsByUser(User user) {
-        TypedQuery<Repair> query
-                = entityManager.createQuery(
-                        "SELECT r FROM Repair r JOIN r.property p WHERE p.user = :user", Repair.class)
-                        .setParameter("user", user);
-        return query.getResultList();
-    }
-
     public List<Repair> findPendingRepairs() {
         TypedQuery<Repair> query
                 = entityManager.createQuery("from " + getEntityClassName()
@@ -99,6 +93,17 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
         query.setParameter("user", user);
         query.setParameter("repairStatus", RepairStatus.PENDING);
 
+        return query.getResultList();
+    }
+
+    public List<Repair> findRepairsByUserId(Long userId) {
+        User user = entityManager.find(User.class, userId);
+        if (user == null) {
+            return Collections.emptyList();
+        }
+        TypedQuery<Repair> query = entityManager.createQuery(
+                "SELECT r FROM Repair r JOIN r.property p WHERE p.user = :user", Repair.class)
+                .setParameter("user", user);
         return query.getResultList();
     }
 
@@ -128,26 +133,51 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
         return query.getResultList();
     }
 
-    public List<Repair> findRepairsByDates(LocalDateTime startDate, LocalDateTime endDate, User user) {
-        if (user == null) {
+    public List<Repair> findInprogressRepairsToday() {
+        TypedQuery<Repair> query
+                = entityManager.createQuery("from " + getEntityClassName()
+                        + " where repairStatus = :repairStatus "
+                        + "and submissionDate between :startDate and :endDate",
+                        getEntityClass())
+                        .setParameter("startDate", LocalDate.now().atStartOfDay())
+                        .setParameter("endDate", LocalDateTime.now())
+                        .setParameter("repairStatus", RepairStatus.INPROGRESS);
+        return query.getResultList();
+    }
+
+    public List<Repair> findRepairsByDates(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
+
+        if (userId == null) {
             TypedQuery<Repair> query
                     = entityManager.createQuery("from " + getEntityClassName()
-                            + " where submission_date between :startDate and :endDate",
+                            + " where submissionDate between :startDate and :endDate",
                             getEntityClass())
                             .setParameter("startDate", startDate)
                             .setParameter("endDate", endDate);
 
             return query.getResultList();
         } else {
-            TypedQuery<Repair> query
-                    = entityManager.createQuery("SELECT r FROM Repair r "
-                            + "JOIN r.property p "
-                            + "WHERE r.submissionDate BETWEEN :startDate AND :endDate "
-                            + "AND p.user = :user", Repair.class)
-                            .setParameter("startDate", startDate)
-                            .setParameter("endDate", endDate)
-                            .setParameter("user", user);
-            return query.getResultList();
+            User user = entityManager.find(User.class, userId);
+            if (user == null) {
+                TypedQuery<Repair> query = entityManager.createQuery(
+                        "from " + getEntityClassName()
+                        + " where submissionDate between :startDate and :endDate",
+                        getEntityClass())
+                        .setParameter("startDate", startDate)
+                        .setParameter("endDate", endDate);
+
+                return query.getResultList();
+            } else {
+                TypedQuery<Repair> query
+                        = entityManager.createQuery("SELECT r FROM Repair r "
+                                + "JOIN r.property p "
+                                + "WHERE r.submissionDate BETWEEN :startDate AND :endDate "
+                                + "AND p.user = :user", Repair.class)
+                                .setParameter("startDate", startDate)
+                                .setParameter("endDate", endDate)
+                                .setParameter("user", user);
+                return query.getResultList();
+            }
         }
     }
 
