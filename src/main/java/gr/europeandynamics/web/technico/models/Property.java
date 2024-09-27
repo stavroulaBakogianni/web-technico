@@ -1,7 +1,6 @@
 package gr.europeandynamics.web.technico.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import gr.europeandynamics.web.technico.models.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
