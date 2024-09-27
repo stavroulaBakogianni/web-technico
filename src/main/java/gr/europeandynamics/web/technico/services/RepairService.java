@@ -24,15 +24,17 @@ public interface RepairService {
 
     List<Repair> getInProgressRepairs();
 
-    List<Repair> getRepairsByUser(User user);
+    List<Repair> getInprogressRepairsToday();
+
+    List<Repair> getRepairsByUserId(Long userId);
 
     List<Repair> getRepairsByProperty(Property property);
 
     List<Repair> getAcceptedRepairs();
 
-    List<Repair> getRepairsByDate(String date, User user);
+    List<Repair> getRepairsByDate(String date, Long userId);
 
-    List<Repair> getRepairsByRangeOfDates(String startDate, String endDate, User user);
+    List<Repair> getRepairsByRangeOfDates(String startDate, String endDate, Long userId);
 
     boolean deleteRepairPermantly(Long id);
 
