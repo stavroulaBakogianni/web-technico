@@ -88,7 +88,7 @@ public class UserResource {
     }
 
     @PUT
-    @Path("propertyOwner/{id}")
+    @Path("/{id}")
     public Response updateUser(@PathParam("id") Long id, User user) {
 
         if (!id.equals(user.getId())) {
