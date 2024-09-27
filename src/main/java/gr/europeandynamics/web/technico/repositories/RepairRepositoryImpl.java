@@ -2,6 +2,7 @@ package gr.europeandynamics.web.technico.repositories;
 
 import gr.europeandynamics.web.technico.models.Property;
 import gr.europeandynamics.web.technico.models.Repair;
+import gr.europeandynamics.web.technico.models.RepairStatus;
 import gr.europeandynamics.web.technico.models.User;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
@@ -82,9 +83,9 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
     public List<Repair> findPendingRepairs() {
         TypedQuery<Repair> query
                 = entityManager.createQuery("from " + getEntityClassName()
-                        + " where repair_status  like :repair_status ",
+                        + " where repairStatus = :repairStatus ",
                         getEntityClass())
-                        .setParameter("repair_status", "PENDING");
+                        .setParameter("repairStatus", RepairStatus.PENDING);
         return query.getResultList();
     }
 
@@ -96,7 +97,7 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
                         + "AND r.repairStatus = :repairStatus "
                         + "AND r.proposedCost IS NOT NULL", Repair.class);
         query.setParameter("user", user);
-        query.setParameter("repairStatus", "PENDING");
+        query.setParameter("repairStatus", RepairStatus.PENDING);
 
         return query.getResultList();
     }
@@ -113,9 +114,9 @@ public class RepairRepositoryImpl implements Repository<Repair, Long> {
     public List<Repair> findInProgressRepairs() {
         TypedQuery<Repair> query
                 = entityManager.createQuery("from " + getEntityClassName()
-                        + " where repair_status = :repair_status ",
+                        + " where repairStatus = :repairStatus ",
                         getEntityClass())
-                        .setParameter("repair_status", "INPROGRESS");
+                        .setParameter("repairStatus", RepairStatus.INPROGRESS);
         return query.getResultList();
     }
 
