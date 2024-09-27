@@ -1,7 +1,6 @@
 package gr.europeandynamics.web.technico.resources;
 
 import gr.europeandynamics.web.technico.models.Repair;
-import gr.europeandynamics.web.technico.models.User;
 import gr.europeandynamics.web.technico.services.RepairService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -27,7 +26,7 @@ public class RepairResource {
     private RepairService repairService;
 
     @POST
-    @Path("propertyOwner/createRepair")
+    @Path("/createRepair")
     public Response createRepair(Repair repair) {
         Optional<Repair> createdRepair = repairService.createRepair(repair.getRepairType(), repair.getShortDescription(), repair.getDescription(), repair.getProperty());
         if (createdRepair.isPresent()) {
@@ -98,16 +97,23 @@ public class RepairResource {
     }
 
     @GET
-    @Path("/propertyOwner/{userId}")
-    public Response getRepairsByUser(@PathParam("userId") Long userId, User user) {
-        List<Repair> repairs = repairService.getRepairsByUser(user);
+    @Path("byUser/{userId}")
+    public Response getRepairsByUserId(@PathParam("userId") Long userId) {
+        List<Repair> repairs = repairService.getRepairsByUserId(userId);
+        return Response.ok(repairs).build();
+    }
+
+    @GET
+    @Path("staffMember/today/inprogress")
+    public Response getInprogressRepairsToday() {
+        List<Repair> repairs = repairService.getInprogressRepairsToday();
         return Response.ok(repairs).build();
     }
 
     @GET
     @Path("/byDate/{date}")
-    public Response getRepairsByDate(@PathParam("date") String date, User user) {
-        List<Repair> repairs = repairService.getRepairsByDate(date, user);
+    public Response getRepairsByDate(@PathParam("date") String date, @QueryParam("userId") Long userId) {
+        List<Repair> repairs = repairService.getRepairsByDate(date, userId);
         return Response.ok(repairs).build();
     }
 
@@ -116,8 +122,8 @@ public class RepairResource {
     public Response getRepairsByRangeOfDates(
             @PathParam("startDate") String startDateStr,
             @PathParam("endDate") String endDateStr,
-            User user) {
-        List<Repair> repairs = repairService.getRepairsByRangeOfDates(startDateStr, endDateStr, user);
+            @QueryParam("userId") Long userId) {
+        List<Repair> repairs = repairService.getRepairsByRangeOfDates(startDateStr, endDateStr, userId);
         return Response.ok(repairs).build();
     }
 }
