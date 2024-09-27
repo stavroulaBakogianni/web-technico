@@ -25,7 +25,7 @@ public class PropertyResource {
     private PropertyService propertyService;
 
     @POST
-    @Path("propertyOwner/createProperty")
+    @Path("/createProperty")
     public Response createProperty(Property property) {
         Optional<Property> createdProperty = propertyService.createProperty(
                 property.getE9(),
