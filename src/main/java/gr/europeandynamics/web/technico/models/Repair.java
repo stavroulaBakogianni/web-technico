@@ -78,11 +78,18 @@ public class Repair implements Serializable {
 
     @NotNull
     private boolean isDeleted = false;
-    
+
     @ManyToOne
     @JoinColumn(name = "property_id")
     private Property property;
-    
+
+    /**
+     * Returns a string representation of the repair request.
+     *
+     * @return a string containing the repair's ID, type, short description,
+     * submission date, detailed description, proposed dates and cost,
+     * acceptance status, repair status, actual dates, and deletion status.
+     */
     @Override
     public String toString() {
         return "Repair{" + "id=" + id + ", repairType=" + repairType + ", shortDescription=" + shortDescription + ", submissionDate=" + submissionDate + ", description=" + description + ", proposedStartDate=" + proposedStartDate + ", proposedEndDate=" + proposedEndDate + ", proposedCost=" + proposedCost + ", acceptanceStatus=" + acceptanceStatus + ", repairStatus=" + repairStatus + ", actualStartDate=" + actualStartDate + ", actualEndDate=" + actualEndDate + ", isDeleted=" + isDeleted + '}';

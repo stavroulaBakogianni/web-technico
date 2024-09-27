@@ -69,6 +69,12 @@ public class User implements Serializable {
     @JsonIgnore
     private List<Property> properties;
 
+    /**
+     * Returns a string representation of the user.
+     *
+     * @return a string containing the user's ID, VAT, name, surname, address,
+     * phone number, email, and role.
+     */
     @Override
     public String toString() {
         return "User {"

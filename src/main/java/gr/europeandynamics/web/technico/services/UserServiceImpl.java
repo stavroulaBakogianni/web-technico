@@ -22,6 +22,19 @@ public class UserServiceImpl implements UserService {
     @Inject
     private UserValidator userValidator;
 
+    /**
+     * Creates a new User with the provided details.
+     *
+     * @param vat the VAT number of the user
+     * @param name the name of the user
+     * @param surname the surname of the user
+     * @param address the address of the user
+     * @param phoneNumber the phone number of the user
+     * @param email the email address of the user
+     * @param password the password of the user
+     * @return an Optional containing the created User if successful, or an
+     * empty Optional if an error occurs
+     */
     @Override
     public Optional<User> createUser(String vat, String name, String surname, String address, String phoneNumber, String email, String password) {
         try {
@@ -51,6 +64,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Retrieves a User by their VAT number.
+     *
+     * @param vat the VAT number of the user
+     * @return an Optional containing the User if found, or an empty Optional if
+     * not
+     */
     @Override
     public Optional<User> getUserByVat(String vat) {
         try {
@@ -63,6 +83,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Retrieves a User by their email address.
+     *
+     * @param email the email address of the user
+     * @return an Optional containing the User if found, or an empty Optional if
+     * not
+     */
     @Override
     public Optional<User> getUserByEmail(String email) {
         try {
@@ -74,6 +101,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Retrieves a User by their email address and password.
+     *
+     * @param email the email address of the user
+     * @param password the password of the user
+     * @return an Optional containing the User if found, or an empty Optional if
+     * not
+     */
     @Override
     public Optional<User> getUserByEmailAndPassword(String email, String password) {
         try {
@@ -86,11 +121,22 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Retrieves all Users from the repository.
+     *
+     * @return a List of all Users
+     */
     @Override
     public List<User> getAllUsers() {
         return userRepository.getAll();
     }
 
+    /**
+     * Retrieves the role of a specified User.
+     *
+     * @param user the User whose role is to be retrieved
+     * @return the Role of the User, or null if the User is null
+     */
     @Override
     public Role getUserRole(User user) {
         if (user != null) {
@@ -99,6 +145,13 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    /**
+     * Updates the details of an existing User.
+     *
+     * @param user the User entity with updated details
+     * @return an Optional containing the updated User if successful, or an
+     * empty Optional if an error occurs
+     */
     @Transactional
     @Override
     public Optional<User> updateUser(User user) {
@@ -125,6 +178,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Permanently deletes a User by their VAT number.
+     *
+     * @param vat the VAT number of the user to be deleted
+     * @return true if the User was successfully deleted, false otherwise
+     */
     @Transactional
     @Override
     public boolean deleteUserPermanently(String vat) {
@@ -137,6 +196,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Safely deletes a User by marking them as deleted.
+     *
+     * @param vat the VAT number of the user to be deleted
+     * @return true if the User was successfully marked as deleted, false
+     * otherwise
+     */
     @Transactional
     @Override
     public boolean deleteUserSafely(String vat) {

@@ -24,6 +24,13 @@ public class PropertyResource {
     @Inject
     private PropertyService propertyService;
 
+    /**
+     * Creates a new property.
+     *
+     * @param property the Property object containing the details of the
+     * property to be created
+     * @return a Response indicating the outcome of the property creation
+     */
     @POST
     @Path("/createProperty")
     public Response createProperty(Property property) {
@@ -41,6 +48,13 @@ public class PropertyResource {
         }
     }
 
+    /**
+     * Updates an existing property.
+     *
+     * @param id the ID of the property to update
+     * @param property the Property object containing the updated details
+     * @return a Response indicating the outcome of the update operation
+     */
     @PUT
     @Path("/{id}")
     public Response updateProperty(@PathParam("id") Long id, Property property) {
@@ -53,6 +67,13 @@ public class PropertyResource {
         }
     }
 
+    /**
+     * Retrieves a property by its E9 identifier.
+     *
+     * @param e9 the E9 identifier of the property to retrieve
+     * @return a Response containing the property if found, or a not found
+     * message
+     */
     @GET
     @Path("/byE9/{e9}")
     public Response getPropertyByE9(@PathParam("e9") String e9) {
@@ -64,6 +85,13 @@ public class PropertyResource {
         }
     }
 
+    /**
+     * Retrieves properties associated with a specific VAT number.
+     *
+     * @param vat the VAT number for which to retrieve properties
+     * @return a Response containing a list of properties associated with the
+     * VAT
+     */
     @GET
     @Path("/byVat/{vat}")
     public Response getPropertiesByVat(@PathParam("vat") String vat) {
@@ -75,6 +103,13 @@ public class PropertyResource {
         }
     }
 
+    /**
+     * Retrieves a property by its ID.
+     *
+     * @param id the ID of the property to retrieve
+     * @return a Response containing the property if found, or a not found
+     * message
+     */
     @GET
     @Path("/{id}")
     public Response getPropertyById(@PathParam("id") Long id) {
@@ -86,6 +121,11 @@ public class PropertyResource {
         }
     }
 
+    /**
+     * Retrieves all properties.
+     *
+     * @return a Response containing a list of all properties
+     */
     @GET
     @Path("/staffMember/allProperties")
     public Response getAllProperties() {
@@ -93,6 +133,12 @@ public class PropertyResource {
         return Response.ok(properties).build();
     }
 
+    /**
+     * Safely deletes a property by its ID.
+     *
+     * @param id the ID of the property to delete
+     * @return a Response indicating the outcome of the safe deletion operation
+     */
     @DELETE
     @Path("/safe/{id}")
     public Response deletePropertySafely(@PathParam("id") Long id) {
@@ -104,6 +150,13 @@ public class PropertyResource {
         }
     }
 
+    /**
+     * Permanently deletes a property by its ID.
+     *
+     * @param id the ID of the property to delete
+     * @return a Response indicating the outcome of the permanent deletion
+     * operation
+     */
     @DELETE
     @Path("/staffMember/permanent/{id}")
     public Response deletePropertyPermanently(@PathParam("id") Long id) {

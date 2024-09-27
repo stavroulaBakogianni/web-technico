@@ -25,6 +25,12 @@ public class RepairResource {
     @Inject
     private RepairService repairService;
 
+    /**
+     * Creates a new repair.
+     *
+     * @param repair the Repair object containing the details of the repair to be created
+     * @return a Response indicating the outcome of the repair creation
+     */
     @POST
     @Path("/createRepair")
     public Response createRepair(Repair repair) {
@@ -36,6 +42,13 @@ public class RepairResource {
         }
     }
 
+    /**
+     * Updates an existing repair.
+     *
+     * @param id the ID of the repair to update
+     * @param repair the Repair object containing the updated details
+     * @return a Response indicating the outcome of the update operation
+     */
     @PUT
     @Path("/{id}")
     public Response updateRepair(@PathParam("id") Long id, Repair repair) {
@@ -49,6 +62,11 @@ public class RepairResource {
         }
     }
 
+    /**
+     * Retrieves all repairs.
+     *
+     * @return a Response containing a list of all repairs
+     */
     @GET
     @Path("staffMember/allRepairs")
     public Response getAllRepairs() {
@@ -56,6 +74,12 @@ public class RepairResource {
         return Response.ok(repairs).build();
     }
 
+    /**
+     * Retrieves a repair by its ID.
+     *
+     * @param id the ID of the repair to retrieve
+     * @return a Response containing the repair if found, or a not found message
+     */
     @GET
     @Path("/{id}")
     public Response getRepairById(@PathParam("id") Long id) {
@@ -67,6 +91,12 @@ public class RepairResource {
         }
     }
 
+    /**
+     * Safely deletes a repair by its ID.
+     *
+     * @param id the ID of the repair to delete
+     * @return a Response indicating the outcome of the safe deletion operation
+     */
     @DELETE
     @Path("/safe/{id}")
     public Response deleteRepairSafely(@PathParam("id") Long id) {
@@ -78,6 +108,12 @@ public class RepairResource {
         }
     }
 
+    /**
+     * Permanently deletes a repair by its ID.
+     *
+     * @param id the ID of the repair to delete
+     * @return a Response indicating the outcome of the permanent deletion operation
+     */
     @DELETE
     @Path("staffMember/permanent/{id}")
     public Response deleteRepairPermanently(@PathParam("id") Long id) {
@@ -89,6 +125,11 @@ public class RepairResource {
         }
     }
 
+    /**
+     * Retrieves all pending repairs.
+     *
+     * @return a Response containing a list of all pending repairs
+     */
     @GET
     @Path("staffMember/pendingRepairs")
     public Response getPendingRepairs() {
@@ -96,6 +137,12 @@ public class RepairResource {
         return Response.ok(pendingRepairs).build();
     }
 
+    /**
+     * Retrieves repairs by user ID.
+     *
+     * @param userId the ID of the user whose repairs to retrieve
+     * @return a Response containing a list of repairs associated with the user
+     */
     @GET
     @Path("byUser/{userId}")
     public Response getRepairsByUserId(@PathParam("userId") Long userId) {
@@ -103,6 +150,11 @@ public class RepairResource {
         return Response.ok(repairs).build();
     }
 
+    /**
+     * Retrieves all repairs in progress today.
+     *
+     * @return a Response containing a list of repairs in progress today
+     */
     @GET
     @Path("staffMember/today/inprogress")
     public Response getInprogressRepairsToday() {
@@ -110,6 +162,13 @@ public class RepairResource {
         return Response.ok(repairs).build();
     }
 
+    /**
+     * Retrieves repairs by date.
+     *
+     * @param date the date for which to retrieve repairs
+     * @param userId optional user ID to filter repairs
+     * @return a Response containing a list of repairs for the specified date
+     */
     @GET
     @Path("/byDate/{date}")
     public Response getRepairsByDate(@PathParam("date") String date, @QueryParam("userId") Long userId) {
@@ -117,6 +176,14 @@ public class RepairResource {
         return Response.ok(repairs).build();
     }
 
+    /**
+     * Retrieves repairs within a specified date range.
+     *
+     * @param startDateStr the start date of the range
+     * @param endDateStr the end date of the range
+     * @param userId optional user ID to filter repairs
+     * @return a Response containing a list of repairs within the specified date range
+     */
     @GET
     @Path("/byRange/{startDate}/{endDate}")
     public Response getRepairsByRangeOfDates(

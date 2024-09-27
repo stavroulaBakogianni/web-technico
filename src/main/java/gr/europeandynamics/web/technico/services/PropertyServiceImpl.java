@@ -27,6 +27,17 @@ public class PropertyServiceImpl implements PropertyService {
     @Inject
     private PropertyValidator propertyValidator;
 
+    /**
+     * Creates a new Property with the provided details.
+     *
+     * @param e9 the E9 number of the property
+     * @param address the address of the property
+     * @param year the construction year of the property
+     * @param propertyType the type of the property
+     * @param vat the VAT number of the user who owns the property
+     * @return an Optional containing the created Property if successful, or an
+     * empty Optional if an error occurs
+     */
     @Override
     @Transactional
     public Optional<Property> createProperty(String e9, String address, int year, PropertyType propertyType, String vat) {
@@ -55,6 +66,13 @@ public class PropertyServiceImpl implements PropertyService {
         }
     }
 
+    /**
+     * Updates the details of an existing Property.
+     *
+     * @param property the Property entity with updated details
+     * @return an Optional containing the updated Property if successful, or an
+     * empty Optional if the property does not exist
+     */
     @Override
     @Transactional
     public Optional<Property> updateProperty(Property property) {
@@ -79,26 +97,59 @@ public class PropertyServiceImpl implements PropertyService {
         }
     }
 
+    /**
+     * Finds a Property by its E9 number.
+     *
+     * @param e9 the E9 number of the property
+     * @return an Optional containing the Property if found, or an empty
+     * Optional if not
+     */
     @Override
     public Optional<Property> findPropertyByE9(String e9) {
         return propertyRepository.findPropertyByE9(e9);
     }
 
+    /**
+     * Finds all Properties associated with a given VAT number.
+     *
+     * @param vat the VAT number of the user whose properties are to be
+     * retrieved
+     * @return a List of Properties associated with the specified VAT number
+     */
     @Override
     public List<Property> findPropertyByVAT(String vat) {
         return propertyRepository.findPropertiesByVAT(vat);
     }
 
+    /**
+     * Retrieves all Properties from the repository.
+     *
+     * @return a List of all Properties
+     */
     @Override
     public List<Property> findAllProperties() {
         return propertyRepository.getAll();
     }
 
+    /**
+     * Finds a Property by its ID.
+     *
+     * @param id the ID of the property
+     * @return an Optional containing the Property if found, or an empty
+     * Optional if not
+     */
     @Override
     public Optional<Property> findPropertyByID(Long id) {
         return propertyRepository.getById(id);
     }
 
+    /**
+     * Safely deletes a Property by marking it as deleted.
+     *
+     * @param id the ID of the property to be deleted
+     * @return true if the Property was successfully marked as deleted, false if
+     * not found
+     */
     @Override
     @Transactional
     public boolean deletePropertyByIdSafely(Long id) {
@@ -114,6 +165,12 @@ public class PropertyServiceImpl implements PropertyService {
         }
     }
 
+    /**
+     * Permanently deletes a Property by its ID.
+     *
+     * @param id the ID of the property to be deleted
+     * @return true if the Property was successfully deleted, false if not found
+     */
     @Override
     @Transactional
     public boolean deletePropertyByIdPermenantly(Long id) {

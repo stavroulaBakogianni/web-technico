@@ -51,17 +51,23 @@ public class Property implements Serializable {
 
     @NotNull
     private boolean isDeleted = false;
-    
+
     @ManyToOne
     @JoinColumn(name = "user_vat", referencedColumnName = "vat", nullable = false)
     private User user;
-    
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL,orphanRemoval = true)
+
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Repair> repairs;
 
+    /**
+     * Returns a string representation of the property.
+     *
+     * @return a string containing the property's ID, E9, address, construction
+     * year, property type, owner's VAT number, and deletion status.
+     */
     @Override
     public String toString() {
-    return "Property{" + "id=" + id + ", e9=" + e9 + ", propertyAddress=" + propertyAddress + ", constructionYear=" + constructionYear + ", propertyType=" + propertyType + ", owner=" + user.getVat() + ", isDeleted=" + isDeleted + '}';
-}
+        return "Property{" + "id=" + id + ", e9=" + e9 + ", propertyAddress=" + propertyAddress + ", constructionYear=" + constructionYear + ", propertyType=" + propertyType + ", owner=" + user.getVat() + ", isDeleted=" + isDeleted + '}';
+    }
 }
