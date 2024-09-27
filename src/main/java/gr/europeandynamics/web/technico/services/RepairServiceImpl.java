@@ -105,8 +105,8 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public List<Repair> getRepairsByUser(User user) {
-        return repairRepository.findRepairsByUser(user);
+    public List<Repair> getRepairsByUserId(Long userId) {
+        return repairRepository.findRepairsByUserId(userId);
     }
 
     @Override
@@ -120,20 +120,25 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public List<Repair> getRepairsByDate(String date, User user) {
+    public List<Repair> getInprogressRepairsToday() {
+        return repairRepository.findInprogressRepairsToday();
+    }
+
+    @Override
+    public List<Repair> getRepairsByDate(String date, Long userId) {
         LocalDate parsedDate = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
         LocalDateTime startDate = parsedDate.atStartOfDay();
         LocalDateTime endDate = parsedDate.atTime(23, 59, 59);
 
-        return repairRepository.findRepairsByDates(startDate, endDate, user);
+        return repairRepository.findRepairsByDates(startDate, endDate, userId);
     }
 
     @Override
-    public List<Repair> getRepairsByRangeOfDates(String startDateStr, String endDateStr, User user) {
+    public List<Repair> getRepairsByRangeOfDates(String startDateStr, String endDateStr, Long userId) {
         LocalDateTime startDate = LocalDate.parse(startDateStr, DateTimeFormatter.ISO_DATE).atStartOfDay();
         LocalDateTime endDate = LocalDate.parse(endDateStr, DateTimeFormatter.ISO_DATE).atTime(23, 59, 59);
 
-        return repairRepository.findRepairsByDates(startDate, endDate, user);
+        return repairRepository.findRepairsByDates(startDate, endDate, userId);
     }
 
     @Override
