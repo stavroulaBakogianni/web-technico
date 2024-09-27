@@ -1,0 +1,717 @@
+{
+	"info": {
+		"_postman_id": "b31634a3-8959-408f-9298-95cf09be45d5",
+		"name": "web-technico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38275475"
+	},
+	"item": [
+		{
+			"name": "UserResource",
+			"item": [
+				{
+					"name": "/users/create (all roles)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"vat\":\"123456788\",\r\n\"name\":\"Stavroula\",\r\n\"surname\":\"Bak\",\r\n\"address\":\"kavala\",\r\n\"phoneNumber\":6890000000,\r\n\"email\":\"stauroula@test2.com\",\r\n\"password\":\"12345678k\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/staffMember/byVat/{vat} (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/staffMember/byVat/123456788",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"staffMember",
+								"byVat",
+								"123456788"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/staffMember/allUsers (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/staffMember/allUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"staffMember",
+								"allUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/staffMember/byEmail/{email} (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/staffMember/byEmail/stauroula@test.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"staffMember",
+								"byEmail",
+								"stauroula@test.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/{email}/{password} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/stauroula@test.com/12345678k",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"stauroula@test.com",
+								"12345678k"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/{userId} (all roles)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"vat\": \"123456789\",\r\n    \"name\": \"Stavroula\",\r\n    \"surname\": \"Bakogianni\",\r\n    \"address\": \"kavala\",\r\n    \"phoneNumber\": 6890000000,\r\n    \"email\": \"stauroula@test.com\",\r\n    \"password\": \"12345678k\",\r\n    \"role\":\"PROPERTY_OWNER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/propertyOwner/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"propertyOwner",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/safe/{vat} (all rolles)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/safe/123456789",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"safe",
+								"123456789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/staffMember/permanent/{vat} (staffMember)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/users/staffMember/permanent/123456788",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"users",
+								"staffMember",
+								"permanent",
+								"123456788"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PropertyResource",
+			"item": [
+				{
+					"name": "/properties/createProperty (all roles)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"e9\": \"1234567890123456789l\",\r\n    \"constructionYear\": 1999,\r\n    \"propertyAddress\": \"Athens\",\r\n    \"propertyType\": \"MAISONETTE\",\r\n    \"user\": {\r\n        \"id\": 8,\r\n        \"vat\": \"123456788\",\r\n        \"name\": \"Stavroula\",\r\n        \"surname\": \"Bakogianni\",\r\n        \"address\": \"kavala\",\r\n        \"phoneNumber\": \"6890000000\",\r\n        \"email\": \"stauroula@test.com\",\r\n        \"password\": \"12345678k\",\r\n        \"role\": \"PROPERTY_OWNER\",\r\n        \"deleted\": false\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/createProperty",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"createProperty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/{id} (all roles)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"e9\": \"1234567890123456789i\",\r\n    \"constructionYear\": 1999,\r\n    \"propertyAddress\": \"Athens Nea Ionia\",\r\n    \"propertyType\": \"MAISONETTE\",\r\n    \"user\": {\r\n        \"id\": 4,\r\n        \"vat\": \"123456789\",\r\n        \"name\": \"Stavroula\",\r\n        \"surname\": \"Bakogianni\",\r\n        \"address\": \"kavala\",\r\n        \"phoneNumber\": \"6890000000\",\r\n        \"email\": \"stauroula@test.com\",\r\n        \"password\": \"12345678k\",\r\n        \"role\": \"PROPERTY_OWNER\",\r\n        \"deleted\": false\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/byE9/{e9} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/byE9/1234567890123456789i",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"byE9",
+								"1234567890123456789i"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/byVat/{vat} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/byVat/123456789",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"byVat",
+								"123456789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/{id} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/staffMember/allProperties (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/staffMember/allProperties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"staffMember",
+								"allProperties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/safe/{id} (all roles)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/safe/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"safe",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/properties/staffMember/permanent/{id} (staffMember)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/properties/staffMember/permanent/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"properties",
+								"staffMember",
+								"permanent",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RepairResource",
+			"item": [
+				{
+					"name": "/repairs/createRepair (all roles)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"repairType\": \"INSULATION\",\r\n    \"shortDescription\": \"insul\",\r\n    \"description\": \"lot's of work\",\r\n    \"property\": {\r\n        \"id\": 9,\r\n        \"e9\": \"1234567890123456789i\",\r\n        \"propertyAddress\": \"Athens\",\r\n        \"constructionYear\": 1999,\r\n        \"propertyType\": \"MAISONETTE\",\r\n        \"user\": {\r\n            \"id\": 4,\r\n            \"vat\": \"123456789\",\r\n            \"name\": \"Stavroula\",\r\n            \"surname\": \"Bakogianni\",\r\n            \"address\": \"kavala\",\r\n            \"phoneNumber\": \"6890000000\",\r\n            \"email\": \"stauroula@test.com\",\r\n            \"password\": \"12345678k\",\r\n            \"role\": \"PROPERTY_OWNER\",\r\n            \"deleted\": false\r\n        },\r\n        \"deleted\": false\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/createRepair",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"createRepair"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/{id} (all roles)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"repairType\": \"INSULATION\",\r\n    \"shortDescription\": \"insulation!!!!\",\r\n    \"submissionDate\": [\r\n        2024,\r\n        9,\r\n        27,\r\n        2,\r\n        49,\r\n        21,\r\n        117634100\r\n    ],\r\n    \"description\": \"lot's of work\",\r\n    \"proposedStartDate\": null,\r\n    \"proposedEndDate\": null,\r\n    \"proposedCost\": null,\r\n    \"acceptanceStatus\": null,\r\n    \"repairStatus\": \"INPROGRESS\",\r\n    \"actualStartDate\": null,\r\n    \"actualEndDate\": null,\r\n    \"property\": {\r\n        \"id\": 6,\r\n        \"e9\": \"1234567890123456789i\",\r\n        \"propertyAddress\": \"Athens\",\r\n        \"constructionYear\": 1999,\r\n        \"propertyType\": \"MAISONETTE\",\r\n        \"user\": {\r\n            \"id\": 4,\r\n            \"vat\": \"123456789\",\r\n            \"name\": \"Stavroula\",\r\n            \"surname\": \"Bakogianni\",\r\n            \"address\": \"kavala\",\r\n            \"phoneNumber\": \"6890000000\",\r\n            \"email\": \"stauroula@test.com\",\r\n            \"password\": \"12345678k\",\r\n            \"role\": \"PROPERTY_OWNER\",\r\n            \"deleted\": false\r\n        },\r\n        \"deleted\": false\r\n    },\r\n    \"deleted\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/staffMember/allRepairs (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/staffMember/allRepairs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"staffMember",
+								"allRepairs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/(id} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/staffMember/permanent/{id} (staffMember)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/staffMember/permanent/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"staffMember",
+								"permanent",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/safe/{id} (all roles)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/safe/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"safe",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "repairs/staffMember/pendingRepairs (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/staffMember/pendingRepairs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"staffMember",
+								"pendingRepairs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/byDate/{Date}?userId={userId} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/byDate/2024-09-27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"byDate",
+								"2024-09-27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/byRange/{startDate}/{endDate}?userId={userId} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/byRange/2024-08-01/2024-09-27?userId=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"byRange",
+								"2024-08-01",
+								"2024-09-27"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/byUser/{userId} (all roles)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/byUser/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"byUser",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/repairs/staffMember/today/inprogress (staffMember)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/webTechnico/resources/repairs/staffMember/today/inprogress",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"webTechnico",
+								"resources",
+								"repairs",
+								"staffMember",
+								"today",
+								"inprogress"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
