@@ -1,5 +1,6 @@
 package gr.europeandynamics.web.technico.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gr.europeandynamics.web.technico.models.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -57,6 +58,7 @@ public class Property implements Serializable {
     private User user;
     
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
     private List<Repair> repairs;
 
     @Override
