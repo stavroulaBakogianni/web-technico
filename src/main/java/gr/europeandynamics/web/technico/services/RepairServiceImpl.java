@@ -54,7 +54,24 @@ public class RepairServiceImpl implements RepairService {
         try {
             repairValidator.validateRepair(repair);
 
-            Optional<Repair> updatedRepair = repairRepository.save(repair);
+            Optional<Repair> existingRepairOptional = repairRepository.getById(repair.getId());
+            if (existingRepairOptional.isEmpty()) {
+                log.error("Repair with ID {} not found.", repair.getId());
+                throw new CustomException("Repair with ID " + repair.getId() + " not found.");
+            }
+            Repair existingRepair = existingRepairOptional.get();
+            existingRepair.setRepairType(repair.getRepairType());
+            existingRepair.setShortDescription(repair.getShortDescription());
+            existingRepair.setDescription(repair.getDescription());
+            existingRepair.setProposedStartDate(repair.getProposedStartDate());
+            existingRepair.setProposedEndDate(repair.getProposedEndDate());
+            existingRepair.setProposedCost(repair.getProposedCost());
+            existingRepair.setAcceptanceStatus(repair.getAcceptanceStatus());
+            existingRepair.setRepairStatus(repair.getRepairStatus());
+            existingRepair.setActualStartDate(repair.getActualStartDate());
+            existingRepair.setActualEndDate(repair.getActualEndDate());
+
+            Optional<Repair> updatedRepair = repairRepository.save(existingRepair);
             return updatedRepair;
         } catch (CustomException e) {
             log.error("Error updating repair: {}", e.getMessage(), e);
