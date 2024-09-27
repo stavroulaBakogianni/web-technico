@@ -79,7 +79,7 @@ public class PropertyRepositoryImpl implements Repository<Property, Long> {
     public List<Property> findPropertiesByVAT(String vat) {
         TypedQuery<Property> query
                 = entityManager.createQuery("from " + getEntityClassName()
-                        + " where user_vat = :vat ",
+                        + " where user.vat = :vat ",
                         getEntityClass())
                         .setParameter("vat", vat);
         return query.getResultList();
