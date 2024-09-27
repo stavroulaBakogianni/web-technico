@@ -65,7 +65,13 @@ public class PropertyServiceImpl implements PropertyService {
                 log.error("Property with ID {} not found.", property.getId());
                 throw new CustomException("Property with ID " + property.getId() + " not found.");
             }
-            Optional<Property> updatedProperty = propertyRepository.save(property);
+            Property existingProperty = existingPropertyOptional.get();
+            existingProperty.setE9(property.getE9());
+            existingProperty.setPropertyAddress(property.getPropertyAddress());
+            existingProperty.setConstructionYear(property.getConstructionYear());
+            existingProperty.setPropertyType(property.getPropertyType());
+            existingProperty.setUser(property.getUser());
+            Optional<Property> updatedProperty = propertyRepository.save(existingProperty);
             return updatedProperty;
         } catch (CustomException e) {
             log.error("Error updating property: {}", e.getMessage());
