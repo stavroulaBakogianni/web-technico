@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"vat\":\"123456788\",\r\n\"name\":\"Stavroula\",\r\n\"surname\":\"Bak\",\r\n\"address\":\"kavala\",\r\n\"phoneNumber\":6890000000,\r\n\"email\":\"stauroula@test2.com\",\r\n\"password\":\"12345678k\"\r\n}",
+							"raw": "{\r\n\"vat\":\"123456755\",\r\n\"name\":\"Stavroula\",\r\n\"surname\":\"Bak\",\r\n\"address\":\"kavala\",\r\n\"phoneNumber\":6890000000,\r\n\"email\":\"stauroula@test5.com\",\r\n\"password\":\"12345678MMM\",\r\n\"role\":\"STAFF_MEMBER\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

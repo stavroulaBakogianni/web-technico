@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<User> createUser(String vat, String name, String surname, String address, String phoneNumber, String email, String password);
+    Optional<User> createUser(String vat, String name, String surname, String address, String phoneNumber, String email, String password, Role role);
 
     Optional<User> getUserByVat(String vat);
 

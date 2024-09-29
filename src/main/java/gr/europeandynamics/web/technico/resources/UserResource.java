@@ -41,7 +41,8 @@ public class UserResource {
                 user.getAddress(),
                 user.getPhoneNumber(),
                 user.getEmail(),
-                user.getPassword()
+                user.getPassword(),
+                user.getRole()
         );
         if (createdUser.isPresent()) {
             return Response.status(Response.Status.CREATED).entity(createdUser.get()).build();

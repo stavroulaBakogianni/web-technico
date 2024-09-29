@@ -1,5 +1,6 @@
 package gr.europeandynamics.web.technico.importers;
 
+import gr.europeandynamics.web.technico.models.Role;
 import gr.europeandynamics.web.technico.services.UserServiceImpl;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -47,8 +48,9 @@ public class UserCSVImporter implements FilesImporter {
                 String phoneNumber = fields[4];
                 String email = fields[5];
                 String password = fields[6];
-
-                userService.createUser(vat, name, surname, address, phoneNumber, email, password);
+                Role role = Role.valueOf(fields[7]);
+                
+                userService.createUser(vat, name, surname, address, phoneNumber, email, password, role);
             }
         } catch (OutOfMemoryError e) {
             System.out.println("Java run out of memory: " + e.getMessage());

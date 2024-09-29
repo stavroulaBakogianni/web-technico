@@ -15,10 +15,10 @@ import java.util.List;
 @Slf4j
 @RequestScoped
 public class UserServiceImpl implements UserService {
-
+    
     @Inject
     private UserRepositoryImpl userRepository;
-
+    
     @Inject
     private UserValidator userValidator;
 
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
      * empty Optional if an error occurs
      */
     @Override
-    public Optional<User> createUser(String vat, String name, String surname, String address, String phoneNumber, String email, String password) {
+    public Optional<User> createUser(String vat, String name, String surname, String address, String phoneNumber, String email, String password, Role role) {
         try {
             userValidator.validateVat(vat);
             userValidator.validateName(name);
@@ -45,8 +45,9 @@ public class UserServiceImpl implements UserService {
             userValidator.validatePhoneNumber(phoneNumber);
             userValidator.validateEmail(email);
             userValidator.validatePassword(password);
-
+            userValidator.validateRole(role);
             User user = new User();
+            
             user.setVat(vat);
             user.setName(name);
             user.setSurname(surname);
@@ -54,13 +55,13 @@ public class UserServiceImpl implements UserService {
             user.setPhoneNumber(phoneNumber);
             user.setEmail(email);
             user.setPassword(password);
-            user.setRole(Role.PROPERTY_OWNER);
-
+            user.setRole(role);
+            
             return userRepository.save(user);
         } catch (CustomException e) {
             log.error("Error creating user: " + e.getMessage());
             return Optional.empty();
-
+            
         }
     }
 
@@ -167,7 +168,7 @@ public class UserServiceImpl implements UserService {
                 existingUser.setPhoneNumber(user.getPhoneNumber());
                 existingUser.setEmail(user.getEmail());
                 existingUser.setPassword(user.getPassword());
-                existingUser.setRole(Role.PROPERTY_OWNER);
+                existingUser.setRole(user.getRole());
                 return Optional.ofNullable(userRepository.save(existingUser).orElse(null));
             } else {
                 return Optional.empty();
@@ -209,7 +210,7 @@ public class UserServiceImpl implements UserService {
         try {
             userValidator.validateVat(vat);
             Optional<User> userOptional = userRepository.getUserByVat(vat);
-
+            
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
                 user.setDeleted(true);
