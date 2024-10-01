@@ -5,6 +5,7 @@ import gr.europeandynamics.web.technico.services.UserServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -98,20 +99,17 @@ public class UserResource {
     }
 
     /**
-     * Retrieves a user by their email and password.
-     * 
-     * This is not a secure request and is for demo purposes only.
-     * 
+     * Authenticates a user based on email and password.
      *
-     * @param email the email address of the user
-     * @param password the password of the user
-     * @return a Response containing the user if valid credentials are provided,
-     * or an unauthorized message
+     * @param email the user's email
+     * @param password the user's password
+     * @return Response indicating the outcome of the authentication
      */
-    @GET
-    @Path("{email}/{password}")
-    public Response getUserByEmailAndPassword(@PathParam("email") String email,
-            @PathParam("password") String password) {
+    @POST
+    @Path("/fakeLogin")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response getUserByEmailAndPassword(@FormParam("email") String email,
+            @FormParam("password") String password) {
         Optional<User> user = userService.getUserByEmailAndPassword(email, password);
         if (user.isPresent()) {
             return Response.ok(user.get()).build();
