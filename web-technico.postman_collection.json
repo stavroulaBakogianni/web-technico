@@ -123,12 +123,27 @@
 					"response": []
 				},
 				{
-					"name": "/users/{email}/{password} (all roles)",
+					"name": "/users/fakeLogin (all roles)",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "alexandros.dimitriadis@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "alexa87ndrosd",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "http://localhost:8080/webTechnico/resources/users/stauroula@test.com/12345678k",
+							"raw": "http://localhost:8080/webTechnico/resources/users/fakeLogin",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -138,8 +153,7 @@
 								"webTechnico",
 								"resources",
 								"users",
-								"stauroula@test.com",
-								"12345678k"
+								"fakeLogin"
 							]
 						}
 					},
